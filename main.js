@@ -3,7 +3,7 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const burguerMenuIcon = document.querySelector('.burguer-menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const cartIcon = document.querySelector('.navbar-shopping-cart');
-const cartMenu = document.querySelector('.product-detail');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 cardsContainer = document.querySelector('.cards-container');
 
 navbarEmail.addEventListener('click', toggleDesktopMenu);
@@ -11,29 +11,29 @@ burguerMenuIcon.addEventListener('click', toggleMobileMenu);
 cartIcon.addEventListener('click', toggleCartMenu);
 
 function toggleDesktopMenu () {
-    const isCartMenuClosed = cartMenu.classList.contains('inactive');
+    const isCartMenuClosed = shoppingCartContainer.classList.contains('inactive');
     if (!isCartMenuClosed){
-        cartMenu.classList.add('inactive');
+        shoppingCartContainer.classList.add('inactive');
     }
     desktopMenu.classList.toggle('inactive')
 }
 function toggleMobileMenu () {
-    const isCartMenuClosed = cartMenu.classList.contains('inactive');
+    const isCartMenuClosed = shoppingCartContainer.classList.contains('inactive');
     if (!isCartMenuClosed){
-        cartMenu.classList.add('inactive');
+        shoppingCartContainer.classList.add('inactive');
     }
     mobileMenu.classList.toggle('inactive')
 }
 function toggleCartMenu () {
-    const isMobileMenuOpen = mobileMenu.classList.contains('slide-right');
+    const isMobileMenuOpen = mobileMenu.classList.contains('inactive');
     const isDesktopMenuClosed = desktopMenu.classList.contains('inactive');
-    if (isMobileMenuOpen){
-        mobileMenu.classList.remove('slide-right');
+    if (!isMobileMenuOpen){
+        mobileMenu.classList.add('inactive');
     }
     if(!isDesktopMenuClosed){
         desktopMenu.classList.add('inactive');
     }
-    cartMenu.classList.toggle('inactive')
+    shoppingCartContainer.classList.toggle('inactive')
 }
 
 const productList = [];
